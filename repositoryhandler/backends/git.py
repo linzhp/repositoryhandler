@@ -358,7 +358,7 @@ class GitRepository (Repository):
             cwd = os.getcwd ()
             target = None
 
-        cmd = ['git', 'show', '--pretty=format:']
+        cmd = ['git', 'show', '--pretty=format:', '-M']
 
         if rev is not None:
             cmd.append (rev)
@@ -376,7 +376,7 @@ class GitRepository (Repository):
 
         cwd = self.__get_root_dir(uri)
         if uri.startswith(cwd) and len(uri) > len(cwd):
-           files = [uri[len(cwd)+1:]]
+            files = [uri[len(cwd)+1:]]
 
         cmd = ['git', 'blame', '--root', '-l', '-t', '-f']
 
